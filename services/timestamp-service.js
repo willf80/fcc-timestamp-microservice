@@ -1,7 +1,6 @@
 const parseDate = (dateString, callback) => {
   if (!dateString) {
-    callback(null, new Date())
-    return
+    return callback(null, new Date())
   }
 
   let date
@@ -11,10 +10,9 @@ const parseDate = (dateString, callback) => {
     date = new Date(dateString)
   }
 
-  if (!date) {
-    const error = 'Invalid Date'
-    callback(error)
-    return
+  if (date.toString() === 'Invalid Date') {
+    const error = { error: 'Invalid Date' }
+    return callback(error)
   }
 
   callback(null, date)

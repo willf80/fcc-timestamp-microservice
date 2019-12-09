@@ -24,7 +24,7 @@ app.get('/api/timestamp/:date_string', function (req, res) {
   const timestampService = require('./services/timestamp-service')
 
   timestampService.parseDate(dateString, (err, date) => {
-    if (err) return res.json({ error: err })
+    if (err) return res.json(err)
     res.json({ unix: date.getTime(), utc: date.toUTCString() })
   })
 })
